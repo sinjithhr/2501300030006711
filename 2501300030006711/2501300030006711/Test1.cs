@@ -1,4 +1,4 @@
-﻿namespace ns_2501300030006711
+﻿namespace ns02_2501300030006711
 {
     [TestClass]
     public class cls01_2501300030006711
