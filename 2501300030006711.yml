@@ -1,0 +1,37 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+
+variables:
+  - name: system.debug
+    value: true
+
+pool:
+  vmImage: windows-latest
+
+stages:
+  - stage: Stage_2501300030006711
+    jobs:
+    - job: Job_2501300030006711
+      steps:
+      - task: NuGetCommand@2
+        inputs:
+          command: 'restore'
+          restoreSolution: '**/*.sln'
+          feedsToUse: 'select'
+        displayName: "Nuget Restore"
+      - task: VSBuild@1
+        inputs:
+          solution: '**\*.sln'
+        displayName: "Build"
+      - task: VSTest@3
+        inputs:
+          testSelector: 'testPlan'
+          testPlan: '37584'
+          testSuite: '39654'
+          testConfiguration: '49'
+          searchFolder: '$(System.DefaultWorkingDirectory)'
+        displayName: "Test Plan Execution"
