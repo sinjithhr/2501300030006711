@@ -18,6 +18,8 @@ stages:
           command: 'restore'
           restoreSolution: '**/*.sln'
           feedsToUse: 'select'
+        displayName: "Nuget Restore"
       - task: VSBuild@1
         inputs:
           solution: '**\*.sln'
+        displayName: "Build"
