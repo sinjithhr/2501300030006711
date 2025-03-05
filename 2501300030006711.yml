@@ -5,6 +5,10 @@
 
 trigger: none
 
+variables:
+  - name: system.debug
+    value: true
+
 pool:
   vmImage: windows-latest
 
@@ -23,3 +27,11 @@ stages:
         inputs:
           solution: '**\*.sln'
         displayName: "Build"
+      - task: VSTest@3
+        inputs:
+          testSelector: 'testPlan'
+          testPlan: '37584'
+          testSuite: '39654'
+          testConfiguration: '49'
+          searchFolder: '$(System.DefaultWorkingDirectory)'
+        displayName: "Test Plan Execution"
